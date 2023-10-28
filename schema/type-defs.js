@@ -6,7 +6,7 @@ const typeDefs = gql`
         name: String!
         username: String!
         age: Int!
-        nationality: String!
+        nationality: Nationality!
         friends: [User]
         favoriteMovies: [Movie]
     }
@@ -25,6 +25,24 @@ const typeDefs = gql`
         movie(name: String!): Movie!
     }
 
+    input CreateUserInput {
+        name: String!
+        username: String!
+        age: Int
+        nationality: Nationality = BRAZIL
+    }
+
+    input UpdateUsernameInput {
+        id: ID!
+        newUsername: String!
+    }
+
+    type Mutation {
+        createUser(input: CreateUserInput!): User
+        updateUsername(input: UpdateUsernameInput!): User
+        deleteUser(id: ID!): User
+    }
+
     enum Nationality {
         CANADA
         BRAZIL
@@ -37,4 +55,12 @@ const typeDefs = gql`
 // - Since general practice for 'enum' is all uppercase, the countries will need to be capitalized as well
 
 // - 'user(id: ID!): User!' means that this field needs argument 'id'
+
+// - to make a default value for field, use '= value' as in 'nationality: Nationality = BRAZIL'
+// input CreateUserInput {
+//     name: String!
+//     username: String!
+//     age: Int
+//     nationality: Nationality = BRAZIL
+// }
 module.exports = { typeDefs };

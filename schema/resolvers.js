@@ -42,6 +42,40 @@ const resolvers = {
             );
         },
     },
+    Mutation: {
+        createUser: (parent, args) => {
+            // To refer what is in 'args', we can look into type-defs. In this case, there is 'input' as an argument for createUser
+            // type Mutation {
+            //     createUser(input: CreateUserInput!): User!
+            // }
+            const user = args.input;
+
+            // in this case where using 'fake database'
+            const lastId = UserList[UserList.length - 1].id;
+            user.id = lastId + 1;
+            UserList.push(user);
+            return user;
+        },
+        updateUsername: (parent, args) => {
+            // const id = args.input.id;
+            // const newUsername = args.input.newUsername
+            // the two lines above can be replaced with a line below
+            const { id, newUsername } = args.input;
+            let updatedUser;
+            UserList.forEach((user) => {
+                if (user.id === Number(id)) {
+                    user.username = newUsername;
+                    updatedUser = user;
+                }
+            });
+            return updatedUser;
+        },
+        deleteUser: (parent, args) => {
+            const id = args.id;
+            _.remove(UserList, (user) => user.id === Number(id));
+            return null;
+        },
+    },
 };
 
 module.exports = { resolvers };
