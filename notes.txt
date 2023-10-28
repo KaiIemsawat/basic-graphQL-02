@@ -1,0 +1,27 @@
+There are 5 basic types (All start with uppercase)
+ID
+String
+Int
+Float
+Boolean
+
+Add '!' after the type to mark that field as required
+
+const typeDefs = gql`    type User {
+        name: String!
+        username: String!
+        age: Int!
+        nationality: String!
+    }
+    type Query {
+        users: [User]!
+    }`
+// In general, first level is Query type
+
+const server = new ApolloServer({typeDefs, resolvers});
+// every pieces of data, types, queries will be in typeDefs
+// every functions that solve thos typse will be in resolvers
+
+
+//-----------------------------------------------------------
+ApolloServer has localhost:4000 for testing
