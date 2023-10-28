@@ -25,3 +25,10 @@ const server = new ApolloServer({typeDefs, resolvers});
 
 //-----------------------------------------------------------
 ApolloServer has localhost:4000 for testing
+
+//-----------------------------------------------------------
+Will need 
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+in App.js (client side)
+- ApolloClient to connect to API
+also see the setup in App.js

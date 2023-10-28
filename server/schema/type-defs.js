@@ -63,4 +63,5 @@ const typeDefs = gql`
 //     age: Int
 //     nationality: Nationality = BRAZIL
 // }
+
 module.exports = { typeDefs };
