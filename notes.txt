@@ -1,3 +1,10 @@
+//-----------------------------------------------------------
+ApolloServer has localhost:4000 for testing
+Or
+https://studio.apollographql.com/sandbox/explorer
+And set http://localhost:4000
+//-----------------------------------------------------------
+
 There are 5 basic types (All start with uppercase)
 ID
 String
@@ -23,8 +30,6 @@ const server = new ApolloServer({typeDefs, resolvers});
 // every functions that solve thos typse will be in resolvers
 
 
-//-----------------------------------------------------------
-ApolloServer has localhost:4000 for testing
 
 //-----------------------------------------------------------
 Will need 
