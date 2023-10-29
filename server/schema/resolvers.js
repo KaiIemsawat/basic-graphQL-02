@@ -11,10 +11,14 @@ const resolvers = {
         //     return UserList;
         // },
         // Could use either 'users() {}' OR 'users: () => {}'
-        users: () => {
+        users: (parent, args, context, info) => {
+            // using context. Could be the most useful beside args
+            // console.log(context.req.headers);
+            // info
+            console.log(info);
             return UserList;
         },
-        user: (parent, args) => {
+        user: (parent, args, constext, info) => {
             // 'args' - an object that contains whatever data the user passes and the argument of the query
             const id = args.id;
             const user = _.find(UserList, { id: Number(id) });
@@ -34,7 +38,9 @@ const resolvers = {
         },
     },
     User: {
-        favoriteMovies: () => {
+        favoriteMovies: (parent) => {
+            // using parent
+            // console.log(parent);
             return _.filter(
                 MovieList,
                 (movie) =>
