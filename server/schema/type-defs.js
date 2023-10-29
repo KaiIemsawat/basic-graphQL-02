@@ -49,6 +49,7 @@ const typeDefs = gql`
         INDIA
         GERMANY
         CHILE
+        THAI
     }
 `;
 // - In general, first level to concern is Query type
